@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="371d9d96-bd39-4c44-9c87-bc80e604b053" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="jenkins-cicd-testFlow" doc:id="4d4849d3-e348-4ff2-9557-27da4a5af186" >
+		<http:listener doc:name="Listener" doc:id="7961bdbe-6334-44e3-98b6-1dbd4a078f55" config-ref="HTTP_Listener_config" path="/test"/>
+		<set-payload value='#[%dw 2.0&#10;output application/json&#10;---&#10;{&#10;	"Message": "HELLO WORLD!",&#10;	"Test": "Jenkins CI/CD TEST"&#10;}]' doc:name="Set Payload" doc:id="39f09690-7a91-4f55-8c73-0685eb1170b8" />
+		<logger level="INFO" doc:name="Logger" doc:id="0ee21227-1f43-48cb-9aff-ffd284eceb0f" message="#[payload]"/>
+	</flow>
+</mule>
