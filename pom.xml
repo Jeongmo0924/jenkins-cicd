@@ -42,7 +42,6 @@
 						<muleVersion>${app.runtime}</muleVersion>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<target>${target}</target>
-						<targetType>${target.type}</targetType>
 						<connectedAppClientId>${connected.app.id}</connectedAppClientId>
 						<connectedAppClientSecret>${connected.app.secret}</connectedAppClientSecret>
 						<connectedAppGrantType>client_credentials</connectedAppGrantType>
