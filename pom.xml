@@ -51,6 +51,9 @@
 							<target.env>${target.env}</target.env>
 							<muleAppVer>${mule.app.ver}</muleAppVer>
 						</properties>
+						<deploymentSettings>
+							<updateStrategy>recreate</updateStrategy>
+						</deploymentSettings>
 					</armDeployment>
 				</configuration>
 			</plugin>
