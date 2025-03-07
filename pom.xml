@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.mycompany</groupId>
+	<groupId>08ce9b75-b313-42b0-9124-4be854b09892</groupId>
 	<artifactId>jenkins-cicd-test</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>${mule.app.ver}</version>
 	<packaging>mule-application</packaging>
 
 	<name>jenkins-cicd-test</name>
@@ -13,8 +15,14 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
+
 		<app.runtime>4.9.0</app.runtime>
 		<mule.maven.plugin.version>4.3.0</mule.maven.plugin.version>
+		<target>192.168.224.1</target>
+		<target.type>hybrid</target.type>
+		<connected.app.id>65764bea8fe144dba974be91a5d5110e</connected.app.id>
+		<connected.app.secret>42024BBB96Db4972aC2D9703BB0F78A0</connected.app.secret>
+		<mule.app.ver>1.0.0-SNAPSHOT</mule.app.ver>
 	</properties>
 
 	<build>
@@ -29,6 +37,22 @@
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
+				<configuration>
+					<armDeployment>
+						<muleVersion>${app.runtime}</muleVersion>
+						<uri>https://anypoint.mulesoft.com</uri>
+						<target>${target}</target>
+						<targetType>${target.type}</targetType>
+						<connectedAppClientId>${connected.app.id}</connectedAppClientId>
+						<connectedAppClientSecret>${connected.app.secret}</connectedAppClientSecret>
+						<connectedAppGrantType>client_credentials</connectedAppGrantType>
+						<environment>Sandbox</environment>
+						<properties>
+							<target.env>${target.env}</target.env>
+							<muleAppVer>${mule.app.ver}</muleAppVer>
+						</properties>
+					</armDeployment>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
@@ -74,5 +98,13 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
+	<distributionManagement>
+		<repository>
+			<id>anypoint-exchange-v3</id>
+			<name>Corporate Repository</name>
+			<url>https://maven.anypoint.mulesoft.com/api/v3/organizations/${project.groupId}/maven</url>
+			<layout>default</layout>
+		</repository>
+	</distributionManagement>
 
 </project>
