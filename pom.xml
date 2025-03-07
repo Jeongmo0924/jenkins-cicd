@@ -18,7 +18,7 @@
 
 		<app.runtime>4.9.0</app.runtime>
 		<mule.maven.plugin.version>4.3.0</mule.maven.plugin.version>
-		<target>192.168.224.1:8081</target>
+		<target>jenkins</target>
 		<target.type>server</target.type>
 		<connected.app.id>65764bea8fe144dba974be91a5d5110e</connected.app.id>
 		<connected.app.secret>42024BBB96Db4972aC2D9703BB0F78A0</connected.app.secret>
