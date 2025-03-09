@@ -18,10 +18,14 @@
 
 		<app.runtime>4.9.0</app.runtime>
 		<mule.maven.plugin.version>4.3.0</mule.maven.plugin.version>
+		
+		<!-- target: Runtime Manager에 등록된 서버명 -->
 		<target>jenkins</target>
+		<!-- target.type: 서버의 유형 -->
 		<target.type>server</target.type>
-		<connected.app.id>65764bea8fe144dba974be91a5d5110e</connected.app.id>
-		<connected.app.secret>42024BBB96Db4972aC2D9703BB0F78A0</connected.app.secret>
+		<!-- connected.app: 테스트 당시 Scope는 API Manager, Runtime Manager, Exchange -->
+		<connected.app.id>648137c9dca342be9ff4fdd7500cc55b</connected.app.id>
+		<connected.app.secret>20D5335Bed224547BEa218347e0c4C2A</connected.app.secret>
 		<mule.app.ver>1.0.0-SNAPSHOT</mule.app.ver>
 	</properties>
 
